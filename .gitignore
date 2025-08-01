@@ -1,0 +1,25 @@
+# Node
+node_modules/
+.env
+.DS_Store
+
+# Logs
+logs
+*.log
+
+# Optional npm cache
+.npm
+
+# Build outputs
+/dist
+/build
+
+# OS files
+Thumbs.db
+*.swp
+
+# VSCode settings
+.vscode/
+
+# MongoDB local database dump
+dump/
