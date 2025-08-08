@@ -9,7 +9,7 @@ import { Server } from "socket.io"
 
 
 dotenv.config();
-console.log("MONGO URI:",process.env.MONGODB_URI);
+
 const app=express();
 app.use(cors({
 
@@ -100,16 +100,7 @@ connectDB()
   });
 
 
-// connectDB()
-// .then(()=>{
-//     app.listen(process.env.PORT,()=>{
-//         console.log(`Server is running one port${process.env.PORT}`)
-//     })
-    
-// })
-// .catch((err)=>{
-//         console.log("Mongodb connection failed!")
-//     })
+
 
     
 
