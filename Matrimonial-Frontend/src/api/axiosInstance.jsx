@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API=axios.create({
-    baseURL:"http://localhost:1000/api"
+    baseURL:"https://matrimonial-app-m0oi.onrender.com/api"
 });
 
 API.interceptors.request.use((req) => {
