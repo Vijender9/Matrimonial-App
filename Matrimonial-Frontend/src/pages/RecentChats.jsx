@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { formatMessageTime } from '../utils/formatMessageTime';
 import { socket } from '../socket';
+import API from '../api/axiosInstance.jsx';
 
 const RecentChats = () => {
   const [chats, setChats] = useState([]);
@@ -17,11 +18,13 @@ const RecentChats = () => {
 
     const fetchChats = async () => {
       try {
-        const res = await axios.get("http://localhost:1000/api/messages/recentMessages", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const res = await API.get("/messages/recentMessages",
+        //    {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`,
+        //   },
+        // }
+      );
 
         const sortedChats = [...(res.data.data || [])].sort(
           (a, b) => new Date(b.lastMessage.created) - new Date(a.lastMessage.created)

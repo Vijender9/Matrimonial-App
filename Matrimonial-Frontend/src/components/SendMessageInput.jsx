@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState, useRef } from 'react';
 import { socket } from '../socket';
+import API from '../api/axiosInstance.jsx';
 
 const SendMessageInput = ({ receiverId, onSend, onTyping }) => {
   const [content, setContent] = useState("");
@@ -10,14 +11,14 @@ const SendMessageInput = ({ receiverId, onSend, onTyping }) => {
   const handleSend = async () => {
     if (!content.trim()) return;
     try {
-      const res = await axios.post(
-        `http://localhost:1000/api/messages/send/${receiverId}`,
-        { content },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+      const res = await API.post(
+        `/messages/send/${receiverId}`
+        // { content },
+        // {
+        //   headers: {
+        //     Authorization: `Bearer ${token}`,
+        //   },
+        // }
       );
 
       const newMsg = res.data.data;

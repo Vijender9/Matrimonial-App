@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import toast from "react-hot-toast";
 import axios from "axios"; // ✅ Add this if not already
+import API from "../api/axiosInstance.jsx";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -16,9 +17,10 @@ const Navbar = () => {
 
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:1000/api/messages/unreadCounts", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const res = await API.get("/messages/unreadCounts")
+          //  {
+        //   headers: { Authorization: `Bearer ${token}` },
+        // });
 
         const unreadSenders = res.data?.data || [];
         setUnreadUserCount(unreadSenders.length); // how many users sent unread messages

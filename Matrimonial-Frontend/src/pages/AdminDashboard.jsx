@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import API from '../api/axiosInstance.jsx';
 
 const AdminDashboard = () => {
   const [pendingUsers, setPendingUsers] = useState([]);
 
   const fetchPending = async () => {
     try {
-      const res = await axios.get("/api/admin/pending-Profiles");
+      const res = await API.get("/admin/pending-Profiles");
       setPendingUsers(res.data.data || []);
     } catch (err) {
       console.log(err);
@@ -14,22 +15,22 @@ const AdminDashboard = () => {
   };
 
   const approveProfile = async (userId) => {
-    await axios.patch(`/api/admin/approve/${userId}`);
+    await API.patch(`/admin/approve/${userId}`);
     fetchPending();
   };
 
   const rejectProfile = async (userId) => {
-    await axios.patch(`/api/admin/reject/${userId}`);
+    await API.patch(`/admin/reject/${userId}`);
     fetchPending();
   };
 
   const approvePhoto = async (userId) => {
-    await axios.patch(`/api/admin/approve-Photo/${userId}`);
+    await API.patch(`/admin/approve-Photo/${userId}`);
     fetchPending();
   };
 
   const rejectPhoto = async (userId) => {
-    await axios.patch(`/api/admin/reject-Photo/${userId}`);
+    await API.patch(`/admin/reject-Photo/${userId}`);
     fetchPending();
   };
 

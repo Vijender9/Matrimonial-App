@@ -4,6 +4,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import SendMessageInput from '../components/SendMessageInput.jsx';
 import { formatMessageTime, formatDateGroup } from '../utils/formatMessageTime.js';
 import { socket } from '../socket';
+import API from '../api/axiosInstance.jsx';
 
 const ChatRoom = () => {
   const { userId } = useParams();
@@ -24,10 +25,11 @@ const ChatRoom = () => {
 
   // Fetch chat messages
   useEffect(() => {
-    axios
-      .get(`http://localhost:1000/api/messages/chat/${userId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+     API.get(`/messages/chat/${userId}` 
+      // {
+    //     headers: { Authorization: `Bearer ${token}` },
+    //   }
+    )
       .then(res => setMessages(res.data?.data || []))
       .catch(err => {
         console.log("Fetch messages error", err);
@@ -38,9 +40,11 @@ const ChatRoom = () => {
   // Fetch user info
   useEffect(() => {
     if (!chatUser) {
-      axios.get(`http://localhost:1000/api/users/${userId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+     API.get(`/users/${userId}`, 
+      // {
+      //   headers: { Authorization: `Bearer ${token}` },
+      // }
+    )
         .then(res => setChatUser(res.data?.data))
         .catch(err => console.log("Error fetching user:", err));
     }
@@ -54,10 +58,10 @@ const ChatRoom = () => {
 
   // Mark messages as read
   useEffect(() => {
-    axios.patch(
-      `http://localhost:1000/api/messages/markAsRead/${userId}`,
-      {},
-      { headers: { Authorization: `Bearer ${token}` } }
+   API.patch(
+      `/messages/markAsRead/${userId}`,
+      // {},
+      // { headers: { Authorization: `Bearer ${token}` } }
     ).catch(err => console.log("Mark read failed", err));
   }, [userId]);
 

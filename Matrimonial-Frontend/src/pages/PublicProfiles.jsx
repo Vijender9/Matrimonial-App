@@ -1,4 +1,5 @@
 import React from 'react'
+import API from '../api/axiosInstance.jsx';
 
 
 const PublicProfiles = () => {
@@ -6,7 +7,7 @@ const PublicProfiles = () => {
       const [profiles, setProfiles] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/public-profiles")
+    API.get("/public/public-profiles")
       .then(res => setProfiles(res.data.data))
       .catch(err => console.log(err));
   }, []);
