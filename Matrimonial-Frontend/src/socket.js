@@ -1,6 +1,6 @@
 // src/socket.js
 import { io } from "socket.io-client";
 
-export const socket = io("http://localhost:1000", {
+export const socket = io("https://matrimonial-app-m0oi.onrender.com", {
   withCredentials: true,
 });
