@@ -62,7 +62,7 @@ const updateProfile =()=>{
         <Input name="caste" label="Caste" value={formData.caste} onChange={handleChange} />
         <Input name="profession" label="Profession" value={formData.profession} onChange={handleChange} />
 
-        {/* 🟡 Profile Picture Upload */}
+        {/* Profile Picture Upload */}
         <div>
           <label className="block text-white-600 mb-1">Profile Picture</label>
           <input type="file" accept="image/*" onChange={handleChange} />

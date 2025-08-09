@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 const Login= ()=>{
   const{login}= useContext(AuthContext);
 
-  console.log("{login is }",login)
+  
 
   const[form, setForm]=useState({
     email:"",
@@ -25,7 +25,7 @@ const Login= ()=>{
       
        const res=await API.post("/users/login",form);
         
-        console.log("resposne is:",res)
+       
         login(res.data.data.token);
 
 

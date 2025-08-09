@@ -17,7 +17,7 @@ const ChatRoom = () => {
 
   // Join socket room
   useEffect(() => {
-    console.log("myuserid for connection in room",myUserId)
+   
   // joining my own room
     socket.emit("join", myUserId); // join here with own userid not rceeiver's
   }, []);
