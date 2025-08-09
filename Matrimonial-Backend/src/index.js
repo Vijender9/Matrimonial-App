@@ -13,7 +13,7 @@ dotenv.config();
 const app=express();
 app.use(cors({
 
-    origin:"https://matrimonial-g2v1et5o8-vijenders-projects-e68981af.vercel.app/",
+    origin:"https://matrimonial-g2v1et5o8-vijenders-projects-e68981af.vercel.app",
     credentials:true
 }))
 app.use(express.json());
