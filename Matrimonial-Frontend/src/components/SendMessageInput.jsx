@@ -12,8 +12,8 @@ const SendMessageInput = ({ receiverId, onSend, onTyping }) => {
     if (!content.trim()) return;
     try {
       const res = await API.post(
-        `/messages/send/${receiverId}`
-        // { content },
+        `/messages/send/${receiverId}`,
+      { content },
         // {
         //   headers: {
         //     Authorization: `Bearer ${token}`,
@@ -63,7 +63,7 @@ const SendMessageInput = ({ receiverId, onSend, onTyping }) => {
         onKeyDown={(e) => e.key === "Enter" && handleSend()}
       />
       <button
-        className="bg-blue-500 text-white px-4 py-2 rounded"
+        className="bg-blue-500 text-black px-4 py-2 rounded"
         onClick={handleSend}
       >
         Send

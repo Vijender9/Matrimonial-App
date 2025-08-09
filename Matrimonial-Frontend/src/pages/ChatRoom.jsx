@@ -161,7 +161,7 @@ const ChatRoom = () => {
       </div>
 
       {/* Input */}
-      <div className="border-t bg-white p-4">
+      <div className="border-t bg-black p-4">
         <SendMessageInput
           receiverId={userId}
           onSend={handleSend}

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useState } from "react";
-import API from "../api/axiosInstance";
+import API from "../api/axiosInstance.jsx";
 import { AuthContext } from "../context/AuthContext.jsx";
 import toast from "react-hot-toast";
 
