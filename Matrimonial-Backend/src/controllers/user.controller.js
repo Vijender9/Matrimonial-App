@@ -9,7 +9,7 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js";
 
 
 const createUser=asyncHandler(async(req,res)=>{
-    console.log("im inside useer creater")
+
     const{name,email,phone,password,gender,dob,religion,caste,profession}=req.body;
   
     const userExist =await User.findOne({email});
@@ -27,9 +27,7 @@ const createUser=asyncHandler(async(req,res)=>{
 
 const getAllUsers= asyncHandler(async(req,res)=>{
     const users=await User.find().select('-password');
-    // if(!users){
-    //     t
-    // }
+   
     res.status(200,users,"ALL USERS FETCHED SUCCESSFULLY");
 })
 
@@ -160,7 +158,7 @@ const searchUser=asyncHandler(async(req,res)=>{
 });
 
 const currentUser=asyncHandler(async(req,res)=>{
-    console.log("im fetching currentuser in backend")
+   
     const user =req.user._id;
     if(!user){
         throw new ApiError(404,"NOt authorized");
@@ -177,9 +175,9 @@ const currentUser=asyncHandler(async(req,res)=>{
 })
 const getUserById=asyncHandler(async(req,res)=>{
   const userId= req.params.userId;
-  console.log("userId of other user",userId)
+  
   const user= await User.findById(userId).select("-password");
-  console.log("user is",user)
+  
   if(!user){
     throw new ApiError(404,"User does not exist");
   }

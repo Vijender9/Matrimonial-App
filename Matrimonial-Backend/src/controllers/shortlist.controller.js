@@ -46,7 +46,7 @@ const getMyShotlists= asyncHandler(async(req,res)=>{
 
 const getMutualMatches =asyncHandler(async(req,res)=>{
        const userId=req.user._id;
-       console.log("im inside getmutual")
+       
        //users im gonna shortlist
        const youShorlisted=await ShortList.find({from:userId}).select("to");
        console.log("youShorlisted:",youShorlisted)
@@ -61,7 +61,7 @@ const getMutualMatches =asyncHandler(async(req,res)=>{
 
        const mutualIds=shortistedIds.filter(id=>shortlistedYouIds.includes(id));
        const matches=await User.find({_id:{$in:mutualIds}}).select("-password");
-       console.log("matches is:",matches);
+       
        res.status(200).
        json(new ApiResponse(200,matches,"Mutual mtches fetched"))
 })

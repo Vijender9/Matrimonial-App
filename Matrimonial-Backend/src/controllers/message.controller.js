@@ -7,7 +7,7 @@ import { asyncHandler } from "../utils/AsyncHandler.js";
 
 
 const sendMessage= asyncHandler(async(req,res)=>{
-    console.log("im at sending message at backend")
+ 
     const senderId=req.user._id;
     const receiverId= req.params.receiverId;
     const{content}=req.body;
@@ -24,11 +24,10 @@ const sendMessage= asyncHandler(async(req,res)=>{
 
 const getConversation= asyncHandler(async(req,res)=>{
 
-    console.log("im at converstaion chat")
+   
     const userId= req.user._id;
     const otherUserId= req.params.userId;
-    console.log("userId must be",userId);
-    console.log("otherUserId",otherUserId)
+   
     const conversations= await Message.find({
         $or:[
             {sender:userId,receiver:otherUserId},
@@ -118,7 +117,7 @@ const getMyChatList = asyncHandler(async (req, res) => {
 });
 
 const markMessagesAsRead= asyncHandler(async(req,res)=>{
-    console.log("inside mark as read")
+  
     const userId=req.user._id;
     const senderId=req.params.userId;
 
