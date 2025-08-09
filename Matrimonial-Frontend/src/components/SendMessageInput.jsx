@@ -13,7 +13,7 @@ const SendMessageInput = ({ receiverId, onSend, onTyping }) => {
     try {
       const res = await API.post(
         `/messages/send/${receiverId}`,
-      { content },
+      {content},
         // {
         //   headers: {
         //     Authorization: `Bearer ${token}`,
